@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '${PORT}:${PORT}'
+    environment:
+      NODE_ENV: develop
+      PORT: 30000
+      GLOBAL_PREFIX: api
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: yarn dev
